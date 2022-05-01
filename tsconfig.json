@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "ES2019",
+        "module": "commonjs",
+        "lib": ["ES2019", "ES2017", "dom"],
+        "declaration": true,
+        "sourceMap": true,
+        "outDir": "dist",
+        "rootDir": "src",
+        "strict": true,
+        "strictNullChecks": false,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "resolveJsonModule": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "*": ["./*"]
+        },
+        "types": ["node", "jest"]
+    },
+    "include": ["./src/**/**/*.ts", "./global.d.ts"],
+    "exclude": ["./node_modules"]
+}
