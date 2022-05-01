@@ -29,8 +29,8 @@ export class APIClient {
 
     async delete(url: string, config: AxiosRequestConfig): Promise<AxiosResponse> {
         const response: AxiosResponse = await axios.delete(url, config);
-        await log.info(`${METHODS.DELETE} ${url} - Got response status ${response.status}`),
-            await log.info(`Request headers: ${JSON.stringify(config.headers)}`);
+        log.info(`${METHODS.DELETE} ${url} - Got response status ${response.status}`),
+            log.info(`Request headers: ${JSON.stringify(config.headers)}`);
 
         return response;
     }
