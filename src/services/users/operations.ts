@@ -2,6 +2,9 @@ import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { User } from '../../types/types';
 import { UserAPI } from './api';
 
+/**
+ * Operations and processing functions for UserAPI
+ */
 const users = new UserAPI();
 
 export async function findUserIdFromEmail(email: string): Promise<string> {

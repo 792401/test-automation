@@ -1,9 +1,8 @@
 import { BASE_URL } from './endpoints';
 
 /**
- * Builds an URL based on given endpoints
- * buildURLPath("users","me") return "myapp/users/me"
- *
+ * Builds an URL based on given endpoints path
+ * buildURLPath("users","me") returns "myapp/users/me"
  * @param endpoints list of paths
  * @returns myapp/users/me
  */

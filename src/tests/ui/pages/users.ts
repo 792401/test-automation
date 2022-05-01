@@ -2,14 +2,22 @@ import { Locator, Page } from '@playwright/test';
 
 export class Users {
     readonly page: Page;
-    readonly nameField: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.nameField = page.locator('[name=username]');
     }
 
-    async fillUsername(username: string) {
-        await this.nameField.fill(username);
+    async clickDeletUserButton(username: string) {
+        const edit: Locator = this.page.locator(
+            `//div[contains(text(),"${username}")]//following-sibling::div[3]//button[2]`
+        );
+
+        await edit.click();
+    }
+
+    async getRow(username: string) {
+        const row: Locator = this.page.locator(`//div[contains(text(),"${username}")]`);
+
+        return row;
     }
 }

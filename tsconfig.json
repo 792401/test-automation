@@ -24,6 +24,6 @@
         },
         "types": ["node", "jest"]
     },
-    "include": ["./src/**/**/*.ts", "./global.d.ts"],
+    "include": ["./src/**/**/*.ts", "./global.d.ts", "src/tests/performance/performance.js"],
     "exclude": ["./node_modules"]
 }

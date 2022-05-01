@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { updateUserByEmail } from '../../services/users/operations';
 import { UserAPI } from '../../services/users/api';
 import { verifyUserIsStored } from '../../validation/api/validation';
-import { testUser, updatedUser } from '../test-data/users';
+import { testUser, updatedUser } from '../test-data/api/users';
 import log from '../../logger/logger';
 
 const users = new UserAPI();
