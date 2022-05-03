@@ -15,6 +15,7 @@ beforeAll(async () => {
 });
 
 describe('Users CRUD operations', function () {
+    
     it('should create an user', async function () {
         const response: AxiosResponse = await users.createUser(testUser);
 

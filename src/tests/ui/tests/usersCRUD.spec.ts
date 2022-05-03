@@ -29,6 +29,7 @@ test.beforeEach(async () => {
 });
 
 test.describe('Users', () => {
+
     test('create user', async () => {
         await header.clickAddUsersTab();
         await addUsers.createUser(testUser);
@@ -41,7 +42,7 @@ test.describe('Users', () => {
         await header.clickUsersTab();
         await expect(
             await users.getUserRow(testUser.username),
-            'Users list should not display deleted user'
+            'Users page should not display deleted user'
         ).not.toBeVisible();
     });
 });

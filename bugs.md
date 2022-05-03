@@ -1,6 +1,6 @@
 # Bugs
 
-#### 1. Can add users with same email
+#### 1. Can add users with the same email
 ##### Steps to reproduce
 1. Add two users with exactly the same email
 2. Check if the users are displayed in the users list
@@ -25,6 +25,7 @@ ________________________________________________________________________________
 
 ##### Actual results
 1. Removing a user takes 2000ms to reflect in the UI
+Note: Besides the bad UX, this also exceeds the performance SLA of 500ms
 ______________________________________________________________________________________
 #### 3. No email validation
 
