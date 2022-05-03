@@ -1,29 +1,31 @@
 import { AxiosResponse } from 'axios';
 import { StatusCodes } from 'http-status-codes';
-import { updateUserByEmail } from '../../services/users/operations';
-import { UserAPI } from '../../services/users/api';
-import { verifyUserIsStored } from '../../validation/api/validation';
+import { updateUserByEmail, cleanUp } from '../../services/user/operations';
+import { UserAPI } from '../../services/user/api';
+import { isUserSaved } from '../../validation/api/validation';
 import { testUser, updatedUser } from '../test-data/api/users';
 import log from '../../logger/logger';
+import { expect } from 'chai';
 
 const users = new UserAPI();
 
-beforeAll(() => {
+beforeAll(async () => {
     log.info('Starting Users CRUD operations test suite');
+    await cleanUp(testUser);
 });
 
 describe('Users CRUD operations', function () {
     it('should create an user', async function () {
         const response: AxiosResponse = await users.createUser(testUser);
 
-        await verifyUserIsStored(response.data);
-        expect(response.status).toEqual(StatusCodes.CREATED);
+        expect(response.status).to.equal(StatusCodes.CREATED);
+        expect(await isUserSaved(response.data), `User with id ${response.data.id} was saved correctly`).to.equal(true);
     });
 
     it('should update an user', async function () {
         const response: AxiosResponse = await updateUserByEmail(testUser.email, updatedUser);
 
-        await verifyUserIsStored(response.data);
-        expect(response.status).toEqual(StatusCodes.OK);
+        expect(response.status).to.equal(StatusCodes.OK);
+        expect(await isUserSaved(response.data), `User with id ${response.data.id} was saved correctly`).to.equal(true);
     });
 });

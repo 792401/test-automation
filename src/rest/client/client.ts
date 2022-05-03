@@ -1,7 +1,10 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import log from '../../logger/logger';
-import { METHODS } from '../contants';
+import { METHODS } from './contants';
 
+/**
+ * HTTP Client
+ */
 export class APIClient {
     async get(url: string, config: AxiosRequestConfig): Promise<AxiosResponse> {
         const response: AxiosResponse = await axios.get(url, config);

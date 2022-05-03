@@ -7,7 +7,7 @@ import { User } from '../../types/types';
 const testHeaders = { headers: { agent: 'automated-tests' } };
 
 /**
- * Abstracts User API
+ * Abstracts User API interface
  */
 export class UserAPI {
     private client;

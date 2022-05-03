@@ -1,13 +1,17 @@
 import _ from 'lodash';
 import { User } from '../../types/types';
-import { expect } from 'chai';
-import { UserAPI } from '../../services/users/api';
+import { UserAPI } from '../../services/user/api';
 
 const users = new UserAPI();
 
-export async function verifyUserIsStored(user: User) {
+/**
+ * Verifies if a user is saved correctly by searching it by id in the User API
+ * and checking all the fields and values
+ * @param user User: An user object that is expected to be stored
+ */
+export async function isUserSaved(user: User): Promise<boolean> {
     const { data } = await users.getUserById(user.id);
     const isEqual = _.isEqual(data, user);
 
-    expect(isEqual, 'User was not saved correctly').to.equal(true);
+    return isEqual;
 }

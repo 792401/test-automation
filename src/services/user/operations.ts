@@ -3,7 +3,7 @@ import { User } from '../../types/types';
 import { UserAPI } from './api';
 
 /**
- * Operations and processing functions for UserAPI
+ * Operations and processing for UserAPI
  */
 const users = new UserAPI();
 
@@ -29,4 +29,13 @@ export async function getUserByEmail(email: string, headers?: AxiosRequestConfig
     const userId: string = await findUserIdFromEmail(email);
     const response: AxiosResponse = await users.getUserById(userId, headers);
     return response;
+}
+
+export async function cleanUp(user: User, headers?: AxiosRequestConfig): Promise<void> {
+    const { data }: AxiosResponse = await users.getAllUsers();
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].email === user.email) {
+            await users.deleteUser(data[i].id, headers);
+        }
+    }
 }

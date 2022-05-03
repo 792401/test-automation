@@ -15,7 +15,7 @@ export class Users {
         await edit.click();
     }
 
-    async getRow(username: string) {
+    async getUserRow(username: string) {
         const row: Locator = this.page.locator(`//div[contains(text(),"${username}")]`);
 
         return row;
