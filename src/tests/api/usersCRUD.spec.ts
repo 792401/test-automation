@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { StatusCodes } from 'http-status-codes';
-import { updateUserByEmail, cleanUp } from '../../services/user/operations';
+import { updateUserByEmail, deleteUser } from '../../services/user/operations';
 import { UserAPI } from '../../services/user/api';
 import { isUserSaved } from '../../validation/api/validation';
 import { testUser, updatedUser } from '../test-data/api/users';
@@ -11,11 +11,10 @@ const users = new UserAPI();
 
 beforeAll(async () => {
     log.info('Starting Users CRUD operations test suite');
-    await cleanUp(testUser);
+    await deleteUser(testUser.email);
 });
 
 describe('Users CRUD operations', function () {
-    
     it('should create an user', async function () {
         const response: AxiosResponse = await users.createUser(testUser);
 

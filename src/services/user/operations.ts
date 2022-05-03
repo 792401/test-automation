@@ -31,10 +31,22 @@ export async function getUserByEmail(email: string, headers?: AxiosRequestConfig
     return response;
 }
 
-export async function cleanUp(user: User, headers?: AxiosRequestConfig): Promise<void> {
-    const { data }: AxiosResponse = await users.getAllUsers();
+/**
+ * Deletes a user by a given email
+ *
+ * @param email string: User email
+ * @param headers AxiosRequestConfig: optional headers
+ */
+export async function deleteUser(email: string, headers?: AxiosRequestConfig): Promise<void> {
+    const { data }: AxiosResponse = await users.getAllUsers(headers);
+    /**
+     * NOTE:
+     * Due to an existing bug, there can be more users with the same email,
+     * therefore we need to loop over the results and delete each one
+     * //TODO: Remove loop and NOTE after fixing the issue
+     */
     for (let i = 0; i < data.length; i++) {
-        if (data[i].email === user.email) {
+        if (data[i].email === email) {
             await users.deleteUser(data[i].id, headers);
         }
     }

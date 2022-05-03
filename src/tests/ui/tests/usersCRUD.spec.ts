@@ -5,7 +5,7 @@ import log from '../../../logger/logger';
 import { testUser } from '../../../tests/test-data/ui/users';
 import { Users } from '../pages/users';
 import { BASE_URL } from '../constants';
-import { cleanUp } from '../../../services/user/operations';
+import { deleteUser } from '../../../services/user/operations';
 
 let addUsers;
 let header;
@@ -16,7 +16,7 @@ test.describe.configure({ mode: 'serial' });
 
 test.beforeAll(async ({ browserName, browser }) => {
     log.info('Starting Users CRUD operations test suite');
-    await cleanUp(testUser);
+    await deleteUser(testUser.email);
     page = await browser.newPage();
     header = new Header(page);
     users = new Users(page);
@@ -29,7 +29,6 @@ test.beforeEach(async () => {
 });
 
 test.describe('Users', () => {
-
     test('create user', async () => {
         await header.clickAddUsersTab();
         await addUsers.createUser(testUser);
