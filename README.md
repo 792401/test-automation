@@ -20,6 +20,6 @@ Inside project directory (at any level) run any custom scripts listed in ```pack
 
 Before commiting new code:
 - ```npm run lint``` for [linter](https://eslint.org/)
-- ```npm run prettier-fix``` for code [formatting](https://prettier.io/)
+- ```npm run prettier-fix``` for automatic code [formatting](https://prettier.io/)
 - ```npm run prettier-check``` for checking code [formatting](https://prettier.io/)
 
