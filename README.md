@@ -19,7 +19,7 @@ Inside project directory (at any level) run any custom scripts listed in ```pack
 - ```npm run test:ui``` to run UI tests (more info [here](https://playwright.dev/docs/intro#command-line))
 
 Before commiting new code:
-- ```npm run lint``` for linter
-- ```npm run prettier-fix``` for code formatting
-- ```npm run prettier-check``` for checking code formatting
+- ```npm run lint``` for [linter](https://eslint.org/)
+- ```npm run prettier-fix``` for code [formatting](https://prettier.io/)
+- ```npm run prettier-check``` for checking code [formatting](https://prettier.io/)
 
